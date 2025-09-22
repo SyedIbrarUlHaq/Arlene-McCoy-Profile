@@ -1,2 +1,2 @@
 Arlene McCoy Profile
-Day One Practice Project
+Day One Practice Project in React
