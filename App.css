@@ -1,0 +1,282 @@
+/* ---------- Base & tokens ---------- */
+:root{
+  --bg: #eeeeef;            /* page background */
+  --card: #ffffff;          /* card surface */
+  --ink: #111315;           /* primary text */
+  --muted: #70757d;         /* secondary text */
+  --line: #e8e8ea;          /* subtle line / input bg */
+  --chip: #e7e8ea;          /* icon chip bg */
+  --shadow: 0 2px 6px rgba(17,19,21,.06), 0 12px 24px rgba(17,19,21,.06);
+
+  /* brand neutrals for badges */
+  --badge-dark: #c47a3a;
+  --badge-l1:   #ecd3b8;
+  --badge-l2:   #f0dfca;
+  --badge-l3:   #f3e8dc;
+  --btn-dark:   #1f2125;
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: "Inter";
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Layout ---------- */
+.page{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Top bar */
+.topbar{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  margin-bottom: 18px;
+}
+.topbar__left{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+.topbar__right{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+.crumbs{
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* icon chip buttons */
+.icon-chip{
+  width: 36px;
+  height: 36px;
+  border: 0;
+  outline: 0;
+  display:grid;
+  place-items:center;
+  background: var(--chip);
+  color: var(--muted);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+.icon-chip i{ font-size: 16px; }
+
+/* bell + pill */
+.bell-wrap{
+  position: relative;
+  display:flex;
+  align-items:center;
+}
+.pill{
+  position: absolute;
+  top: -10px;
+  right: -22px;
+  background: #111;
+  color: #fff;
+  font-size: 6px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* flag chip */
+.flag-chip{
+  height: 36px;
+  padding: 4px 8px;
+  background: var(--chip);
+  border-radius: 10px;
+  display:flex;
+  align-items:center;
+  box-shadow: var(--shadow);
+}
+.flag-chip img{
+  width: 24px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+/* avatars */
+.avatar{ display:block; border-radius: 50%; object-fit: cover; }
+.avatar--sm{ width: 36px; height: 36px; box-shadow: var(--shadow); }
+.avatar--lg{
+  width: 72px;
+  height: 72px;
+  border: 4px solid var(--card);
+  box-shadow: var(--shadow);
+}
+
+/* Title */
+.page-title{
+  margin: 8px 0 14px 0;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+/* Grid */
+.grid{
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+/* ---------- Cards ---------- */
+.card{
+  background: var(--card);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Profile card ---------- */
+.profile{
+  overflow: hidden;
+}
+.profile__cover{
+  height: 170px;
+  background: #d9d9dc;
+}
+.profile__content{
+  position: relative;
+  padding: 16px 20px 22px 20px;
+}
+.profile__content .avatar--lg{
+  position: absolute;
+  top: -36px;       /* overlap the cover */
+  left: 20px;
+  background: var(--card);
+}
+
+.profile__toprow{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  padding-left: 112px; /* space for avatar */
+  gap: 16px;
+}
+.profile__meta{
+  min-width: 0;
+}
+.profile__name{
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+.profile__location{
+  margin:0 0 12px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.school{
+  display:flex; align-items:center; gap:10px;
+}
+.school__dot{
+  width: 18px; height: 18px; border-radius: 5px; background: var(--line);
+  display:inline-block;
+  box-shadow: inset 0 0 0 1px #d6d6d8;
+}
+.school__name{ color:#5c6168; font-size: 13px; }
+
+/* Actions */
+.btn{
+  border: 0;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn--outline{
+  background: transparent;
+  color: #111;
+  box-shadow: inset 0 0 0 1px #cfd1d5;
+}
+.btn--dark{
+  background: var(--btn-dark);
+  color: #fff;
+}
+
+/* Badges area */
+.profile__badges{ margin-top: 24px; }
+.section-label{
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 10px 0;
+}
+.badges{ display:flex; gap: 16px; }
+
+
+
+/* ---------- Right stack ---------- */
+.stack{
+  display:flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.info{ padding: 16px; }
+.info__title{
+  margin: 4px 0 12px 4px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.note{
+  background: var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  color: #5d6168;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* Stats */
+.stats{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1.3fr;
+  gap: 8px 12px;
+  align-items: center;
+}
+.stat{ display:flex; flex-direction: column; gap:6px; }
+.stat--wide{ align-items:flex-start; }
+.stat__label{
+  color: var(--muted);
+  font-size: 12px;
+}
+.stat__value{
+  font-size: 22px;
+  font-weight: 700;
+}
+.stat__badge{ display:flex; align-items:center; }
+.stat__headline{
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+/* Enrolled class line */
+.class-line{
+  font-weight: 800;
+  font-size: 22px;
+  margin-left: 4px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px){
+  .grid{ grid-template-columns: 1fr; }
+  .stack{ order: 2; }
+  .profile{ order: 1; }
+  .profile__toprow{ flex-direction: column; align-items: flex-start; padding-left: 112px; }
+  .profile__actions{ display:flex; gap: 10px; }
+}
